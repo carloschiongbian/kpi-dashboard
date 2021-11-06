@@ -1,0 +1,43 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, .container-fluid {
+  background-color: #0c0c55;
+}
+
+body .container-fluid > * {
+  background-color: #fdfafa;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+body .container-fluid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  padding-inline: 100px;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+body .last-row {
+  background-color: #0c0c55;
+}
+
+body .last-row .gross-profit-chart {
+  margin: auto;
+  background-color: #fdfafa;
+  border: 1px solid black;
+  width: 50%;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+/*# sourceMappingURL=styles.css.map */

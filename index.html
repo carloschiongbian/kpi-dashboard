@@ -8,11 +8,8 @@
     <link href="./public/css/styles.css" rel = "stylesheet">
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- javascript file -->
-    <script src="./public/js/numberOfCustomers.js"></script>
+  >
+
     <title>KPI Dashboard</title>
 </head>
 <body>
@@ -31,8 +28,15 @@
             </div>
         </div>
 
-        <div class="units-per-transaction-chart">
-            <p>units-per-transaction-chart</p>
+        <div class="number-of-customers-retained-chart">
+            <canvas id="unitsPerTransaction-chart"></canvas>
+            <div class="input-data">
+                <input type = "number" id = "no-of-items-input" placeholder = "Number of Items Purchased In a Period" min="0">
+                <input type = "number" id = "no-of-transactions-input" placeholder = "Number of Transactions In a Period" min="0">
+                <input type = "date"   id = "month-period-input" placeholder = "Enter Date">
+                <button onclick = "resetLineChart()">Reset Chart</button>
+                <button onclick = "renderLineChart()">Submit</button>
+            </div>
         </div>
 
         <div class="returned-items-chart">
@@ -45,15 +49,15 @@
             <p>gross-profit-chart</p>
         </div>
     </div> 
-</body>
 
-<script>
-    
-    var no_of_customers_chart = new Chart(
-        document.getElementById('no-of-customers-chart'),
-        config
-    );
+		
 
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- javascript file -->
+    <script src="./public/js/numberOfCustomers.js"></script>
+    <script src="./public/js/unitsPerTransaction.js"></script>
+    </body>
 
 </html>

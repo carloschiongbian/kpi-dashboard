@@ -62,7 +62,7 @@ function resetChart(){
         reset_cust: [],
         reset_labels: []
     };
-
+    document.getElementById("month-input").min = "";
     no_of_customers_chart.config.data.datasets[0].data = reset_data.reset_cust;
     no_of_customers_chart.config.data.labels = reset_data.reset_labels;
     no_of_customers_chart.update();

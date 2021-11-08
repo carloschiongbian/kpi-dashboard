@@ -4,7 +4,7 @@
 let KPIdata = {
     labels: [],
     datasets: [{
-      label: 'Units Per Transaction',
+      label: 'Average Units Per Transaction',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [],
@@ -31,6 +31,8 @@ function renderLineChart() {
     let no_of_items = document.getElementById("no-of-items-input").value;
     let no_of_transactions_input = document.getElementById("no-of-transactions-input").value;
     let period = document.getElementById("month-period-input").value;
+    document.getElementById("month-period-input").min = period;
+
     let result;
     const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
@@ -41,7 +43,6 @@ function renderLineChart() {
         date = new Date(period);
         formattedDate = date.getDate() + "-" + months[date.getMonth()] + "-" + date.getFullYear();
         
-
         units_per_transaction_config.data.labels.push(formattedDate);
         units_per_transaction_config.data.datasets[0].data.push(result);
         units_per_transaction_chart.update();
@@ -62,4 +63,5 @@ function resetLineChart() {
     document.getElementById("no-of-items-input").value = "";
     document.getElementById("no-of-transactions-input").value = "";
     document.getElementById("month-period-input").value = "";
+    document.getElementById("month-input").min = "";
 }

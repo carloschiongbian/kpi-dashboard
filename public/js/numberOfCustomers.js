@@ -1,3 +1,5 @@
+const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
 // reference for the function
 var data = {
     labels: [],
@@ -24,18 +26,21 @@ var no_of_customers_chart = new Chart(
 function numberOfCustomersRetained(){
 
     var number_of_customers = document.getElementById("no-of-customers-input").value;
-    var month = document.getElementById("month-input").value;
+    var period = document.getElementById("month-input").value;
 
-    if(number_of_customers != "" && month != ""){
+    if(number_of_customers != "" && period != ""){
 
-        document.getElementById("month-input").min = month;
+        document.getElementById("month-input").min = period;
+
+        date = new Date(period);
+        formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
 
         var new_data = {
             customers: [],
             labels: []
         };
 
-        data.labels.push(month);
+        data.labels.push(formattedDate);
         data.datasets[0].data.push(number_of_customers);
 
         data.datasets[0].data.forEach(data => {
@@ -50,8 +55,8 @@ function numberOfCustomersRetained(){
         no_of_customers_chart.config.data.labels = new_data.labels;
         no_of_customers_chart.update();
 
-        var number_of_customers = document.getElementById("no-of-customers-input").value = "";
-        var month = document.getElementById("month-input").value = "";
+        document.getElementById("no-of-customers-input").value = "";
+        document.getElementById("month-input").value = "";
     } else {
         alert("Please input values.");
     }

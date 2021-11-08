@@ -39,8 +39,17 @@
             </div>
         </div>
 
-        <div class="returned-items-chart">
-            <p>returned-items-chart</p>
+        <div class="number-of-customers-retained-chart">
+            <div style="height: 400px;">
+                <canvas id="returnsChart"></canvas>
+            </div>
+            <div class="input-data">
+                <input type = "number" id = "overdue" placeholder = "Overdue" min="0">
+                <input type = "number" id = "defective" placeholder = "Defective" min="0">
+                <input type = "number" id = "damaged" placeholder = "Damaged">
+                <button onclick = "resetPie()">Reset Chart</button>
+                <button onclick = "renderPie()">Submit</button>
+            </div>
         </div>
        
     </div>
@@ -58,6 +67,7 @@
     <!-- javascript file -->
     <script src="./public/js/numberOfCustomers.js"></script>
     <script src="./public/js/unitsPerTransaction.js"></script>
+    <script src="./public/js/returns.js"></script>
     </body>
 
 </html>

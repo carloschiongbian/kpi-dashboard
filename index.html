@@ -14,8 +14,14 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="revenue-growth-chart">
-            <p>revenue-growth-chart</p>
+        <div class="number-of-customers-retained-chart">
+            <canvas id="revenueChart"></canvas>
+            <div class="input-data">
+                <input type = "number" id = "revenueInput" placeholder = "Revenue for this period" min="0">
+                <input type = "date"   id = "rev-date-input" placeholder = "Enter Period">
+                <button onclick = "resetRev()">Reset Chart</button>
+                <button onclick = "submitRev()">Submit</button>
+            </div>
         </div>
 
         <div class="number-of-customers-retained-chart">
@@ -68,6 +74,7 @@
     <script src="./public/js/numberOfCustomers.js"></script>
     <script src="./public/js/unitsPerTransaction.js"></script>
     <script src="./public/js/returns.js"></script>
+    <script src="./public/js/revenueGrowth.js"></script>
     </body>
 
 </html>

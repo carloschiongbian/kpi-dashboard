@@ -25,6 +25,19 @@ body {
     width: 100%;
     border-radius: 10px;
     padding: 30px;
+
+      button {
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 10px;
+        display: inline;
+        width: fit-content;
+      }
+
+      .input-data > * {
+        margin: auto;
+        margin-top: 10px;
+      }
   }
 
   .container-fluid {
@@ -41,25 +54,13 @@ body {
 
     // }
 
-    .number-of-customers-retained-chart {
-      .input-data > * {
-        margin: auto;
-        margin-top: 10px;
-      }
-
-      button {
-        border-radius: 10px;
-        border: 1px solid grey;
-        padding: 10px;
-        // float: left;
-        display: inline;
-        width: fit-content;
-      }
-    }
-
-    // .units-per-transaction-chart{
-
+    // .number-of-customers-retained-chart {
+      
     // }
+
+    .units-per-transaction-chart{
+      padding-bottom: -30px;
+    }
 
     // .returned-items-chart{
 

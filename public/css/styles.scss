@@ -1,84 +1,83 @@
 $main-bg-color: rgb(10, 10, 59);
 $main-font: Arial, Helvetica, sans-serif;
 
-*{
-    font-family: $main-font;
+* {
+  font-family: $main-font;
 }
 
-html, .container-fluid{
-    background-color: $main-bg-color;
+html,
+.container-fluid {
+  background-color: $main-bg-color;
 }
 
-input{
-    border-radius: 5px;
-    border: 1px solid grey;
-    padding: 10px;
-    display: block;
-    width: 40%;
+input {
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 10px;
+  display: block;
+  width: 40%;
 }
 
-body{
+body {
+  .container-fluid > * {
+    background-color: rgb(253, 250, 250);
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 10px;
+    padding: 30px;
+  }
 
-    .container-fluid > *{
-        background-color: rgb(253, 250, 250);
-        border: 1px solid black;
-        width: 100%;
+  .container-fluid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    padding-inline: 100px;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    text-align: center;
+
+    // .revenue-growth-chart{
+
+    // }
+
+    .number-of-customers-retained-chart {
+      .input-data > * {
+        margin: auto;
+        margin-top: 10px;
+      }
+
+      button {
         border-radius: 10px;
-        padding: 30px;
+        border: 1px solid grey;
+        padding: 10px;
+        // float: left;
+        display: inline;
+        width: fit-content;
+      }
     }
 
-    .container-fluid{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-        padding-inline: 100px;
-        padding-top: 100px;
-        padding-bottom: 20px;
-        text-align: center;
-        
+    // .units-per-transaction-chart{
 
-        // .revenue-growth-chart{
+    // }
 
-        // }
+    // .returned-items-chart{
 
-        .number-of-customers-retained-chart{
-            .input-data > *{
-                margin: auto;
-                margin-top: 10px;
-            }
+    // }
+  }
 
-            button{
-                border-radius: 10px;
-                border: 1px solid grey;
-                padding: 10px;
-                // float: left;
-                display: inline;
-                width: fit-content;
-            }
-        }
+  .last-row {
+    background-color: $main-bg-color;
+    padding-bottom: 100px;
 
-        // .units-per-transaction-chart{
-
-        // }
-
-        // .returned-items-chart{
-
-        // }
+    .gross-profit-chart {
+      margin: auto;
+      background-color: rgb(253, 250, 250);
+      border: 1px solid black;
+      width: 50%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 10px;
     }
-    
-    .last-row{
-        background-color: $main-bg-color;
-        padding-bottom: 100px;
-
-        .gross-profit-chart{
-            margin: auto;
-            background-color: rgb(253, 250, 250);
-            border: 1px solid black;
-            width: 50%;
-            text-align: center;
-            border-radius: 10px;
-            padding: 10px;
-        }
-    }
+  }
 }

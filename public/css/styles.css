@@ -51,10 +51,6 @@ body .container-fluid {
   text-align: center;
 }
 
-body .container-fluid .units-per-transaction-chart {
-  padding-bottom: -30px;
-}
-
 body .last-row {
   background-color: #0a0a3b;
   padding-bottom: 100px;

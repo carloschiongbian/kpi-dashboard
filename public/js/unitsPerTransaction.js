@@ -36,7 +36,7 @@ function renderLineChart() {
     let result;
     const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-    if (no_of_items != "" && no_of_transactions_input != "" && period != "") {
+    if ((no_of_items != "" && no_of_transactions_input != "" && period != "") && (parseInt(no_of_transactions_input) < parseInt(no_of_items))) {
 
         result = calculateKPI(no_of_items, no_of_transactions_input);
 
@@ -51,7 +51,7 @@ function renderLineChart() {
         document.getElementById("no-of-transactions-input").value = "";
         document.getElementById("month-period-input").value = "";
     } else {
-        alert("Please fill in all the inputs..")
+        alert("Error! Something is wrong! Please Try again!")
     }
 }
 

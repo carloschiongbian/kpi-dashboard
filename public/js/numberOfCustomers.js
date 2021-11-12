@@ -1,7 +1,7 @@
 const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
 // reference for the function
-var data = {
+let data = {
     labels: [],
     datasets: [{
         label: 'Number of Customers Retained',
@@ -12,12 +12,12 @@ var data = {
     }]
 };
 
-var config = {
+let config = {
     type: 'line',
     data: data,
 };
 
-var no_of_customers_chart = new Chart(
+let no_of_customers_chart = new Chart(
     document.getElementById("no-of-customers-chart"),
     config
 );
@@ -39,7 +39,7 @@ function numberOfCustomersRetained(){
             customers: [],
             labels: []
         };
-
+        console.log(formattedDate);
         data.labels.push(formattedDate);
         data.datasets[0].data.push(number_of_customers);
 

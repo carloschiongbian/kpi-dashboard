@@ -1,6 +1,3 @@
-
-
-
 let KPIdata = {
     labels: [],
     datasets: [{

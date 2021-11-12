@@ -1,6 +1,6 @@
-var labels = ['Overdue','Defective','Damaged'];
+let labels = ['Overdue','Defective','Damaged'];
 
-var data = {
+let data = {
   labels: labels,
   datasets: [{
     label: 'Returns due to improper shipment and defective',
@@ -14,7 +14,7 @@ var data = {
   }],
 };
 
-var returns_config = {
+let returns_config = {
   type: 'pie',
   data: data 
 
@@ -25,7 +25,7 @@ var returns_config = {
   // }
 };
 
-var return_chart = new Chart(
+let return_chart = new Chart(
   document.getElementById("returns-chart"),
   returns_config
 );

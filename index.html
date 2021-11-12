@@ -56,11 +56,22 @@
         </div>
        
     </div>
+   
     <div class="last-row">
+        
         <div class="gross-profit-chart">
-            <p>gross-profit-chart</p>
+            <canvas id="grossProfit"></canvas>
+            <div class="input-data">
+                <input type = "number" id = "revenue" placeholder = "Revenue" min="0">
+                <input type = "number"   id = "cost-of-goods" placeholder = "Enter Cost of Goods" min="0">
+                <input type = "date"   id = "month-period-input" placeholder = "Enter Date">
+                <button onclick = "resetGross()">Reset Chart</button>
+                <button onclick = "submitGross()">Submit</button>
+            </div>   
         </div>
     </div> 
+
+		
 
 		
 
@@ -72,6 +83,7 @@
     <script src="./public/js/unitsPerTransaction.js"></script>
     <script src="./public/js/returns.js"></script>
     <script src="./public/js/revenueGrowth.js"></script>
+    <script src="./public/js/grossProfit.js"></script>
     </body>
 
 </html>

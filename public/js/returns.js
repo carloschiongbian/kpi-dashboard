@@ -1,9 +1,8 @@
-let labels = ['Overdue','Defective','Damaged'];
+let names = ['Overdue','Defective','Damaged'];
 
-let data = {
-  labels: labels,
-  datasets: [{
-    label: 'Returns due to improper shipment and defective',
+let product = {
+  labels: names,
+  datasets: [{ 
     data: [],
     backgroundColor: [
       'rgb(255, 99, 132)',
@@ -16,7 +15,7 @@ let data = {
 
 let returns_config = {
   type: 'pie',
-  data: data 
+  data: product 
 
   // this makes the height infinitely increase for some reason
   // options:{

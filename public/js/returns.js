@@ -3,7 +3,7 @@ let names = ['Overdue','Defective','Damaged'];
 let product = {
   labels: names,
   datasets: [{ 
-    data: [],
+    data: [], 
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',

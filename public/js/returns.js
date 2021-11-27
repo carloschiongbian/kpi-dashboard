@@ -34,17 +34,39 @@ function renderPie(){
   let def = document.getElementById("defective").value; 
   let dam = document.getElementById("damaged").value;
 
-  if(over !="" && def !="" && dam != ""){
-    returns_config.data.datasets[0].data.push(over);
-    returns_config.data.datasets[0].data.push(def);
-    returns_config.data.datasets[0].data.push(dam);
-    return_chart.update();
-    document.getElementById("overdue").value = "";
-    document.getElementById("defective").value = "";
-    document.getElementById("damaged").value = "";
-
+  if(returns_config.data.datasets[0].data.length == 0){
+    if(over !="" && def !="" && dam != ""){
+      returns_config.data.datasets[0].data.push(over);
+      returns_config.data.datasets[0].data.push(def);
+      returns_config.data.datasets[0].data.push(dam);
+      return_chart.update();
+      document.getElementById("overdue").value = "";
+      document.getElementById("defective").value = "";
+      document.getElementById("damaged").value = "";
+  
+    } else {
+        alert("invalid data");
+    }
   } else {
-      alert("invalid data");
+    if(over !="" && def !="" && dam != ""){
+      
+      new_over = parseInt(returns_config.data.datasets[0].data[0]) + parseInt(over);
+      new_def = parseInt(returns_config.data.datasets[0].data[1]) + parseInt(def);
+      new_dam = parseInt(returns_config.data.datasets[0].data[2]) + parseInt(dam);
+      returns_config.data.datasets[0].data = [];
+      return_chart.update();
+      returns_config.data.datasets[0].data.push(new_over);
+      returns_config.data.datasets[0].data.push(new_def);
+      returns_config.data.datasets[0].data.push(new_dam);
+
+      return_chart.update();
+      document.getElementById("overdue").value = "";
+      document.getElementById("defective").value = "";
+      document.getElementById("damaged").value = "";
+  
+    } else {
+        alert("invalid data");
+    }
   }
 }
 

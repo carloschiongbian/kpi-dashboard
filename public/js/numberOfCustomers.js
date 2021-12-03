@@ -23,6 +23,9 @@ let no_of_customers_chart = new Chart(
 );
 // reference for the function
 
+let analysis_data = [];
+let test = 0;
+
 function numberOfCustomersRetained(){
 
     var number_of_customers = document.getElementById("no-of-customers-input").value;
@@ -39,7 +42,7 @@ function numberOfCustomersRetained(){
             customers: [],
             labels: []
         };
-        console.log(formattedDate);
+        
         data.labels.push(formattedDate);
         data.datasets[0].data.push(number_of_customers);
 
@@ -50,6 +53,8 @@ function numberOfCustomersRetained(){
         data.labels.forEach(data => {
             new_data.labels.push(data);
         });
+
+        createAnalysis(number_of_customers, formattedDate);
         
         no_of_customers_chart.config.data.datasets[0].data = new_data.customers;
         no_of_customers_chart.config.data.labels = new_data.labels;
@@ -68,7 +73,57 @@ function resetChart(){
         reset_labels: []
     };
     document.getElementById("month-input").min = "";
+    document.getElementById("modal-body").innerText = "";
     no_of_customers_chart.config.data.datasets[0].data = reset_data.reset_cust;
     no_of_customers_chart.config.data.labels = reset_data.reset_labels;
+    analysis_data = [];
     no_of_customers_chart.update();
+}
+
+function createAnalysis(no_of_customers, date) {
+
+    let new_data = {
+        no_of_customers: no_of_customers,
+        date: date
+    };
+
+    let new_div = document.createElement("div");
+
+    new_div.innerText = 
+        "There were " + new_data.no_of_customers +  " customers in " + new_data.date + 
+        ((analysis_data.length > 0) ? calculateChange(new_data.no_of_customers) : "." ) ;
+
+    analysis_data.push(new_data);
+
+    document.getElementById("modal-body").appendChild(new_div);
+
+}
+
+function calculateChange(no_of_customers){
+    let previous_month = analysis_data.length - 1;
+    let previous_month_customers = analysis_data[previous_month].no_of_customers;
+    let result = "";
+    let percentage = 0;
+
+    if(no_of_customers > previous_month_customers){
+        let increase = no_of_customers - previous_month_customers;
+        percentage = (increase / previous_month_customers) * 100;
+
+    } else if(no_of_customers < previous_month_customers){
+        let decrease = previous_month_customers - no_of_customers;
+        percentage = (decrease / previous_month_customers) * 100;
+        
+    } else if(no_of_customers == previous_month_customers){
+        percentage = 0;
+    }
+
+    if(percentage > 0) {
+        result = ". The number of people increased by " + percentage.toFixed(2) + "%.";
+    } else if(percentage < 0) {
+        result = ". The number of people decreased by " + percentage.toFixed(2) + "%.";
+    } else if(percentage == 0){
+        result = ". There was no change in the amount of people." + no_of_customers;
+    }
+
+    return result;
 }

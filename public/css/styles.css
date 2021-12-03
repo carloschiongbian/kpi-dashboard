@@ -26,6 +26,7 @@ body .container-fluid > * {
 body .container-fluid > * button {
   border-radius: 10px;
   border: 1px solid grey;
+  background-color: whitesmoke;
   padding: 10px;
   display: inline;
   width: -webkit-fit-content;
@@ -33,9 +34,46 @@ body .container-fluid > * button {
   width: fit-content;
 }
 
+body .container-fluid > * button[name="modal-btn"] {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  margin: 0;
+  padding: 10px;
+}
+
+body .container-fluid > * button[name="modal-btn"]:focus {
+  outline: none;
+}
+
 body .container-fluid > * .input-data > * {
   margin: auto;
   margin-top: 10px;
+}
+
+body .container-fluid > * #exampleModal > * {
+  color: black;
+  border-radius: 10px;
+}
+
+body .container-fluid > * #exampleModal > * .modal-body > * {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+body .container-fluid > * #exampleModal > * .modal-footer {
+  text-align: center;
+}
+
+body .container-fluid > * #exampleModal > * .modal-footer button {
+  color: black;
+}
+
+body .container-fluid > * #exampleModal > * .modal-footer button:hover {
+  background-color: gray;
+  color: white;
 }
 
 body .container-fluid {
@@ -69,6 +107,7 @@ body .last-row .gross-profit-chart {
 body .last-row .gross-profit-chart button {
   border-radius: 10px;
   border: 1px solid grey;
+  background-color: whitesmoke;
   padding: 10px;
   display: inline;
   width: -webkit-fit-content;

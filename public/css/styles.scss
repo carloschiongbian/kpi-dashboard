@@ -1,5 +1,6 @@
 $main-bg-color: rgb(10, 10, 59);
 $main-font: Arial, Helvetica, sans-serif;
+$btn-color: whitesmoke;
 
 * {
   font-family: $main-font;
@@ -29,15 +30,55 @@ body {
       button {
         border-radius: 10px;
         border: 1px solid grey;
+        background-color: $btn-color;
         padding: 10px;
         display: inline;
         width: fit-content;
+      }
+
+      button[name="modal-btn"]{
+        background-color: $btn-color;
+        border-radius: 10px;
+        color: black;
+        margin: 0;
+        padding: 10px;
+        
+        &:focus{
+          outline: none;
+        }
       }
 
       .input-data > * {
         margin: auto;
         margin-top: 10px;
       }
+
+      #exampleModal > *{
+        color: black;
+        border-radius: 10px;
+
+        .modal-body > *{
+          border: 1px solid black;
+          padding: 10px;
+          border-radius: 10px;
+          margin: 5px;
+        }
+
+        .modal-footer{
+          text-align: center;
+
+          button{
+            color: black;
+
+            &:hover{
+              background-color: gray;
+              color: white;
+            }
+          }
+        }
+      }
+
+
   }
 
   .container-fluid {
@@ -67,6 +108,7 @@ body {
       button {
         border-radius: 10px;
         border: 1px solid grey;
+        background-color: $btn-color;
         padding: 10px;
         display: inline;
         width: fit-content;

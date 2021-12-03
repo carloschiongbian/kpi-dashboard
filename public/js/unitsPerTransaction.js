@@ -1,10 +1,13 @@
+let obj = JSON.parse(localStorage.getItem('unitsPerTransact')) == null ? [] : JSON.parse(localStorage.getItem('unitsPerTransact'));
+
+
 let KPIdata = {
-    labels: [],
+    labels: obj.labels == null? []: obj.labels ,
     datasets: [{
       label: 'Average Units Per Transaction',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [],
+      data: obj.data == null? []: obj.data ,
     }]
 };
 
@@ -35,6 +38,8 @@ function renderLineChart() {
 
     if ((no_of_items != "" && no_of_transactions_input != "" && period != "") && (parseInt(no_of_transactions_input) < parseInt(no_of_items))) {
 
+       
+
         result = calculateKPI(no_of_items, no_of_transactions_input);
 
         date = new Date(period);
@@ -43,6 +48,13 @@ function renderLineChart() {
         units_per_transaction_config.data.labels.push(formattedDate);
         units_per_transaction_config.data.datasets[0].data.push(result);
         units_per_transaction_chart.update();
+
+        let obj = {
+            labels: units_per_transaction_config.data.labels,
+            data: units_per_transaction_config.data.datasets[0].data
+        };
+        localStorage.setItem("unitsPerTransact", JSON.stringify(obj));
+        console.log(JSON.parse(localStorage.getItem('unitsPerTransact')));
 
         document.getElementById("no-of-items-input").value = "";
         document.getElementById("no-of-transactions-input").value = "";
@@ -55,6 +67,7 @@ function renderLineChart() {
 function resetLineChart() {
     units_per_transaction_config.data.labels = [];
     units_per_transaction_config.data.datasets[0].data = [];
+    localStorage.removeItem('unitsPerTransact');
     units_per_transaction_chart.update();
 
     document.getElementById("no-of-items-input").value = "";
@@ -93,10 +106,10 @@ function generateUTPAnalysis() {
 
     let addedText = "";
     if (averagePercentageChange < 0) {
-        generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"red");
+        generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"red") + "%.";
         addedText = generateText + " This indicates that there is a decline in a company's sales or earnings";
     } else if (averagePercentageChange > 0) {
-        generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"blue");
+        generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"blue") + "%.";
         addedText = generateText + " This indicates that the company is improving and is likely to show higher earnings.";
     }
     console.log(addedText)
@@ -104,3 +117,4 @@ function generateUTPAnalysis() {
 
     $('#unitsPerTransaction-modal').modal('show');
 }
+

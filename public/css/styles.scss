@@ -4,6 +4,8 @@ $btn-color: whitesmoke;
 
 * {
   font-family: $main-font;
+  
+  color: black;
 }
 
 html,
@@ -36,6 +38,7 @@ body {
         width: fit-content;
       }
 
+      button[name="grossprofit-modal-btn"],
       button[name="modal-btn"]{
         background-color: $btn-color;
         border-radius: 10px;
@@ -96,7 +99,7 @@ body {
     background-color: $main-bg-color;
     padding-bottom: 100px;
 
-    .gross-profit-chart {
+    .returned-items-chart {
       margin: auto;
       background-color: rgb(253, 250, 250);
       border: 1px solid black;
@@ -118,6 +121,32 @@ body {
         margin: auto;
         margin-top: 10px;
       }
+
+      #gross-profit-modal > *{
+        color: black;
+        border-radius: 10px;
+
+        .modal-body > *{
+          border: 1px solid black;
+          padding: 10px;
+          border-radius: 10px;
+          margin: 5px;
+        }
+
+        .modal-footer{
+          text-align: center;
+
+          button{
+            color: black;
+
+            &:hover{
+              background-color: gray;
+              color: white;
+            }
+          }
+        }
+      }
+      
     }
   }
 }

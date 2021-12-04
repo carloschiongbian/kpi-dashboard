@@ -48,11 +48,10 @@ function submitRev(){
 
     const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-
     if(revI != "" && revD != ""){
 
         date = new Date(revD);
-        formattedDate = date.getDate() + "-" + months[date.getMonth()] + "-" + date.getFullYear();
+        formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
 
         revenue_config.data.datasets[0].data.push(revI);
         revenue_config.data.labels.push(formattedDate);

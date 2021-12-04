@@ -20,7 +20,7 @@
             <canvas id="revenueChart"></canvas>
             <div class="input-data">
                 <input type = "number" id = "revenueInput" placeholder = "Revenue for this period" min="0">
-                <input type = "date"   id = "rev-date-input" placeholder = "Enter Period">
+                <input type = "month" id = "rev-date-input" placeholder = "Enter Period">
                 <button onclick = "resetRev()">Reset Chart</button>
                 <button onclick = "submitRev()">Submit</button>
             </div>
@@ -88,6 +88,44 @@
             </div>
         </div>
 
+        <div class="gross-profit-chart">
+            <canvas id="grossProfit"></canvas>
+            <div class="input-data">
+                <input type = "number" id = "investment" placeholder = "For Initial Investments" min="0">
+                <input type = "number" id = "revenue" placeholder = "Revenue" min="0">
+                <input type = "number" id = "cost-of-goods" placeholder = "Enter Cost of Goods" min="0">
+                <input type = "month" id = "month-period" placeholder = "Enter Date">
+                <button onclick = "resetGross()">Reset Chart</button>
+                <button onclick = "submitGross()">Submit</button>
+                <button type="button" name="grossprofit-modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Chart Analysis
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="gross-profit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Analysis</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="modal-body">
+                            <!-- analysis will be inserted here -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+       
+    </div>
+   
+    <div class="last-row">
+        
         <div class="returned-items-chart">
             <canvas id="returns-chart"></canvas>
             <div class="input-data">
@@ -98,21 +136,7 @@
                 <button onclick = "renderPie()">Submit</button>
             </div>
         </div>
-       
-    </div>
-   
-    <div class="last-row">
         
-        <div class="gross-profit-chart">
-            <canvas id="grossProfit"></canvas>
-            <div class="input-data">
-                <input type = "number" id = "revenue" placeholder = "Revenue" min="0">
-                <input type = "number"   id = "cost-of-goods" placeholder = "Enter Cost of Goods" min="0">
-                <input type = "date"   id = "month-period-input" placeholder = "Enter Date">
-                <button onclick = "resetGross()">Reset Chart</button>
-                <button onclick = "submitGross()">Submit</button>
-            </div>   
-        </div>
     </div> 
 
 		

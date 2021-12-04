@@ -1,8 +1,8 @@
 /*const labeling = Utils.months({count: 12});*/
-const datainfo = {
-  label:[],
+let datainfo = {
+  labels:[],
   datasets: [{
-    labeling: 'Gross Profit',
+    label: 'Gross Profit',
     data: [],
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
@@ -41,32 +41,66 @@ var grossChart = new Chart(
     grossProfit_config
 );
 function submitGross(){
-    let revI = document.getElementById("revenue").value;
-    let revD = document.getElementById("cost-of-goods").value;
+    var monthly_revenue = document.getElementById("revenue").value;
+    var COGS = document.getElementById("cost-of-goods").value;
+    var month_period = document.getElementById("month-period").value;
+    var investment = document.getElementById("investment").value;
 
-    const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    if(monthly_revenue != "" && COGS != ""){
 
+        document.getElementById("month-period-input").min = month_period;
 
-    if(revI != "" && revD != ""){
+        date = new Date(month_period);
+        let formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
 
-        date = new Date(revD);
-        formattedDate = date.getDate() + "-" + months[date.getMonth()] + "-" + date.getFullYear();
+        let gross_profit = monthly_revenue - COGS;
 
-        grossProfit_config.data.datasets[0].data.push(revI);
+        grossProfit_config.data.datasets[0].data.push(gross_profit);
         grossProfit_config.data.labels.push(formattedDate);
         grossChart.update();
         document.getElementById("revenue").value = "";
         document.getElementById("cost-of-goods").value = "";
+        document.getElementById("month-period").value = "";
+
+    } else if(investment != "" && month_period != ""){
+      document.getElementById("month-period-input").min = month_period;
+
+        date = new Date(month_period);
+        let formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
+
+        grossProfit_config.data.datasets[0].data.push(investment);
+        grossProfit_config.data.labels.push(formattedDate);
+        grossChart.update();
+        document.getElementById("investment").value = "";        
+        document.getElementById("month-period").value = "";
+
+    } else{
+      alert("Please Input Revenue Data");
+      
     }
-    else(alert("Please Input Revenue Data"))
+    
+    calculateIRR();
+}
+
+function calculateIRR(){
+
+  let present_worth = 0;
+  let capital_investment = datainfo.datasets[0].data[0];
+
+  datainfo.datasets[0].data[!0].forEach(monthly_cash_flow => {
+    present_worth = present_worth + parseInt(monthly_cash_flow); 
+  });
+
+  console.log(present_worth);
 }
 
 function resetGross() {
   grossProfit_config.data.labels = [];
   grossProfit_config.data.datasets[0].data = [];
-  grossChart.update();
 
-    document.getElementById("revenue").value = "";
-    document.getElementById("cost-of-goods").value = "";
+  document.getElementById("revenue").value = "";
+  document.getElementById("cost-of-goods").value = "";
+  document.getElementById("month-period").value = "";
     
+  grossChart.update();
 }

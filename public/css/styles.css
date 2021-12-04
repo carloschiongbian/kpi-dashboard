@@ -1,5 +1,6 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
+  color: black;
 }
 
 html,
@@ -34,6 +35,7 @@ body .container-fluid > * button {
   width: fit-content;
 }
 
+body .container-fluid > * button[name="grossprofit-modal-btn"],
 body .container-fluid > * button[name="modal-btn"] {
   background-color: whitesmoke;
   border-radius: 10px;
@@ -42,6 +44,7 @@ body .container-fluid > * button[name="modal-btn"] {
   padding: 10px;
 }
 
+body .container-fluid > * button[name="grossprofit-modal-btn"]:focus,
 body .container-fluid > * button[name="modal-btn"]:focus {
   outline: none;
 }
@@ -94,7 +97,7 @@ body .last-row {
   padding-bottom: 100px;
 }
 
-body .last-row .gross-profit-chart {
+body .last-row .returned-items-chart {
   margin: auto;
   background-color: #fdfafa;
   border: 1px solid black;
@@ -104,7 +107,7 @@ body .last-row .gross-profit-chart {
   padding: 10px;
 }
 
-body .last-row .gross-profit-chart button {
+body .last-row .returned-items-chart button {
   border-radius: 10px;
   border: 1px solid grey;
   background-color: whitesmoke;
@@ -115,8 +118,33 @@ body .last-row .gross-profit-chart button {
   width: fit-content;
 }
 
-body .last-row .gross-profit-chart .input-data > * {
+body .last-row .returned-items-chart .input-data > * {
   margin: auto;
   margin-top: 10px;
+}
+
+body .last-row .returned-items-chart #gross-profit-modal > * {
+  color: black;
+  border-radius: 10px;
+}
+
+body .last-row .returned-items-chart #gross-profit-modal > * .modal-body > * {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+body .last-row .returned-items-chart #gross-profit-modal > * .modal-footer {
+  text-align: center;
+}
+
+body .last-row .returned-items-chart #gross-profit-modal > * .modal-footer button {
+  color: black;
+}
+
+body .last-row .returned-items-chart #gross-profit-modal > * .modal-footer button:hover {
+  background-color: gray;
+  color: white;
 }
 /*# sourceMappingURL=styles.css.map */

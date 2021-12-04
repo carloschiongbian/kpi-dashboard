@@ -36,7 +36,7 @@ function numberOfCustomersRetained(){
         document.getElementById("month-input").min = period;
 
         date = new Date(period);
-        formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
+        let formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
 
         var new_data = {
             customers: [],

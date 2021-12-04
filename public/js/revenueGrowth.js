@@ -1,40 +1,27 @@
+let revObj = JSON.parse(localStorage.getItem('revenueGrowth')) == null ? [] : JSON.parse(localStorage.getItem('revenueGrowth'));
+let i = 0;
+let globalObj = {
+  labels: [],
+  data: [],
+  revenue: [],
+  newLabels: []
+}
+
+
+
 const revdata = {
-    labels: [],
+    labels: revObj.newLabels == null? []: revObj.newLabels ,
     datasets: [{
       label: 'Revenue Growth',
-      data: [],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ],
-      borderWidth: 1
+      data: revObj.data == null? []: revObj.data,
+      borderColor: 'rgb(75, 192, 192)',
     }]
   };
 
 const revenue_config = {
-    type: 'bar',
+    type: 'line',
     data: revdata,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    },
+    options: {},
   };
 
   var reveChart = new Chart(
@@ -42,20 +29,53 @@ const revenue_config = {
     revenue_config
 );
 
+
+function calculateIndividualPercentageChange(initial, next) {
+  let result = ((next - initial)/initial) * 100;
+  return result;
+}
+
+function calculateAveragePercentageChange(i) {
+  let value;
+  value = parseFloat(calculateIndividualPercentageChange(globalObj.revenue[i], globalObj.revenue[i + 1])).toFixed(2);
+  return value;
+}
+
+function createPeriod(i) {
+  let newString = "Period "+globalObj.labels[i]+ " to " + globalObj.labels[i + 1];
+  return newString;
+}
+
 function submitRev(){
-    let revI = document.getElementById("revenueInput").value;
-    let revD = document.getElementById("rev-date-input").value;
-
-    const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
+  let revI = document.getElementById("revenueInput").value;
+  let revD = document.getElementById("rev-date-input").value;
+  let percentChange;
+  let newLabels;
+  
     if(revI != "" && revD != ""){
 
-        date = new Date(revD);
-        formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
+      globalObj.labels.push(revD);
+      globalObj.revenue.push(revI);
 
-        revenue_config.data.datasets[0].data.push(revI);
-        revenue_config.data.labels.push(formattedDate);
+      
+      if (globalObj.revenue.length >= 2 ) {
+        percentChange = calculateAveragePercentageChange(i);
+        newLabels = createPeriod(i);
+        globalObj.data.push(percentChange);
+        globalObj.newLabels.push(newLabels);
+
+        revenue_config.data.labels.push(newLabels);
+        revenue_config.data.datasets[0].data.push(percentChange);
         reveChart.update();
+
+        localStorage.setItem("revenueGrowth", JSON.stringify(globalObj));
+ 
+
+        i++;
+      }
+      
+      
+      
         document.getElementById("revenueInput").value = "";
         document.getElementById("rev-date-input").value = "";
     }
@@ -65,9 +85,12 @@ function submitRev(){
 function resetRev() {
     revenue_config.data.labels = [];
     revenue_config.data.datasets[0].data = [];
+    localStorage.removeItem('revenueGrowth');
     reveChart.update();
-
+     i = 0;
     document.getElementById("revenueInput").value = "";
     document.getElementById("rev-date-input").value = "";
     
 }
+
+

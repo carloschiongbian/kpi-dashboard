@@ -1,9 +1,10 @@
-let names = ['Overdue','Defective','Damaged'];
+let retObj = JSON.parse(localStorage.getItem('returns')) == null ? [] : JSON.parse(localStorage.getItem('returns'));
+let names = ['Overdue', 'Defective', 'Damaged'];
 
 let product = {
   labels: names,
   datasets: [{ 
-    data: [], 
+    data: retObj.data == null? []: retObj.data, 
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
@@ -40,6 +41,14 @@ function renderPie(){
       returns_config.data.datasets[0].data.push(def);
       returns_config.data.datasets[0].data.push(dam);
       return_chart.update();
+
+      let obj = {
+        data: returns_config.data.datasets[0].data
+      };
+      localStorage.setItem("returns", JSON.stringify(obj));
+      console.log(localStorage.getItem('returns'))
+
+
       document.getElementById("overdue").value = "";
       document.getElementById("defective").value = "";
       document.getElementById("damaged").value = "";
@@ -48,8 +57,9 @@ function renderPie(){
         alert("invalid data");
     }
   } else {
-    if(over !="" && def !="" && dam != ""){
+    if (over != "" && def != "" && dam != "") {
       
+   
       new_over = parseInt(returns_config.data.datasets[0].data[0]) + parseInt(over);
       new_def = parseInt(returns_config.data.datasets[0].data[1]) + parseInt(def);
       new_dam = parseInt(returns_config.data.datasets[0].data[2]) + parseInt(dam);
@@ -58,8 +68,14 @@ function renderPie(){
       returns_config.data.datasets[0].data.push(new_over);
       returns_config.data.datasets[0].data.push(new_def);
       returns_config.data.datasets[0].data.push(new_dam);
-
       return_chart.update();
+
+      let obj = {
+        data: returns_config.data.datasets[0].data
+      };
+      localStorage.setItem("returns", JSON.stringify(obj));
+      console.log(localStorage.getItem('returns'))
+
       document.getElementById("overdue").value = "";
       document.getElementById("defective").value = "";
       document.getElementById("damaged").value = "";
@@ -71,6 +87,7 @@ function renderPie(){
 }
 
 function resetPie(){
-    returns_config.data.datasets[0].data = [];
-    return_chart.update();
+  returns_config.data.datasets[0].data = [];
+  localStorage.removeItem('returns');
+  return_chart.update();
 }

@@ -50,19 +50,8 @@ function numberOfCustomersRetained(){
         };
 
         localStorage.setItem("numberOfCustomers", JSON.stringify(new_data));
-        // data.datasets[0].data.forEach(data => {
-        //     new_data.customers.push(data);
-        // });
-
-        // data.labels.forEach(data => {
-        //     new_data.labels.push(data);
-        // });
 
         createAnalysis(number_of_customers, formattedDate);
-        
-        // no_of_customers_chart.config.data.datasets[0].data = new_data.customers;
-        // no_of_customers_chart.config.data.labels = new_data.labels;
-        
 
         document.getElementById("no-of-customers-input").value = "";
         document.getElementById("month-input").value = "";
@@ -78,6 +67,7 @@ function resetChart(){
     };
     document.getElementById("month-input").min = "";
     document.getElementById("modal-body").innerText = "";
+    localStorage.removeItem('numberOfCustomers');
     no_of_customers_chart.config.data.datasets[0].data = reset_data.reset_cust;
     no_of_customers_chart.config.data.labels = reset_data.reset_labels;
     analysis_data = [];

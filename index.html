@@ -20,6 +20,7 @@
             <canvas id="revenueChart"></canvas>
             <div class="input-data">
                 <input type = "number" id = "revenueInput" placeholder = "Revenue for this period" min="0">
+                <input type = "number" id = "expensesInput" placeholder = "Total Expenses for this period" min="0">
                 <input type = "month" id = "rev-date-input" placeholder = "Enter Period">
                 <button onclick = "resetRev()">Reset Chart</button>
                 <button onclick = "submitRev()">Submit</button>
@@ -91,12 +92,6 @@
         <div class="gross-profit-chart">
             <canvas id="grossProfit"></canvas>
             <div class="input-data">
-                <input type = "number" id = "investment" placeholder = "For Initial Investments" min="0">
-                <input type = "number" id = "revenue" placeholder = "Revenue" min="0">
-                <input type = "number" id = "cost-of-goods" placeholder = "Enter Cost of Goods" min="0">
-                <input type = "month" id = "month-period" placeholder = "Enter Date">
-                <button onclick = "resetGross()">Reset Chart</button>
-                <button onclick = "submitGross()">Submit</button>
                 <button type="button" name="grossprofit-modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     Chart Analysis
                 </button>

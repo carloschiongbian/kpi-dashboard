@@ -64,15 +64,14 @@ function submitGross(){
 
     } else if(investment != "" && month_period != ""){
       document.getElementById("month-period-input").min = month_period;
+      date = new Date(month_period);
+      let formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
 
-        date = new Date(month_period);
-        let formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
-
-        grossProfit_config.data.datasets[0].data.push(investment);
-        grossProfit_config.data.labels.push(formattedDate);
-        grossChart.update();
-        document.getElementById("investment").value = "";        
-        document.getElementById("month-period").value = "";
+      grossProfit_config.data.datasets[0].data.push(investment);
+      grossProfit_config.data.labels.push(formattedDate);
+      grossChart.update();
+      document.getElementById("investment").value = "";        
+      document.getElementById("month-period").value = "";
 
     } else{
       alert("Please Input Revenue Data");
@@ -87,7 +86,11 @@ function calculateIRR(){
   let present_worth = 0;
   let capital_investment = datainfo.datasets[0].data[0];
 
-  datainfo.datasets[0].data[!0].forEach(monthly_cash_flow => {
+  for(var x = 1; x < datainfo.datasets[0].data.length; x++){
+    present_worth = present_worth + parseInt(monthly_cash_flow);  
+  }
+
+  datainfo.datasets[0].data.forEach(monthly_cash_flow => {
     present_worth = present_worth + parseInt(monthly_cash_flow); 
   });
 

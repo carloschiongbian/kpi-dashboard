@@ -1,7 +1,6 @@
 let monthly_data = (JSON.parse(localStorage.getItem('numberOfCustomers')) == null) ? [] : JSON.parse(localStorage.getItem('numberOfCustomers'));
 const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-console.log(monthly_data);
 
 // reference for the function
 let data = {

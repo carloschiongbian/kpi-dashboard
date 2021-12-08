@@ -92,10 +92,14 @@
         <div class="gross-profit-chart">
             <canvas id="grossProfit"></canvas>
             <div class="input-data">
-                <button type="button" name="grossprofit-modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <input type = "number" id = "first-cost-input" placeholder = "First Cost" min="0" style="margin-bottom: 10px">
+                <button type="button" name="grossprofit-modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#gross-profit-modal">
                     Chart Analysis
                 </button>
-                <!-- Modal -->
+                <button type="button" onclick="calculateROR()" id="ROR-modal-btn" name="ROR-modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#ROR-modal"> 
+                    Check Rate of Return
+                </button>
+                <!-- CHART ANALYSIS Modal -->
                 <div class="modal fade" id="gross-profit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -106,6 +110,26 @@
                                 </button>
                             </div>
                             <div class="modal-body" id="modal-body">
+                            <!-- analysis will be inserted here -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RATE OF RETURN Modal -->
+                <div class="modal fade" id="ROR-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Rate of Return</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="ROR-data">
                             <!-- analysis will be inserted here -->
                             </div>
                             <div class="modal-footer">
@@ -137,16 +161,17 @@
 		
 
 		
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- javascript file -->
-    <script src="./public/js/numberOfCustomers.js"></script>
-    <script src="./public/js/unitsPerTransaction.js"></script>
-    <script src="./public/js/returns.js"></script>
-    <script src="./public/js/revenueGrowth.js"></script>
-    <script src="./public/js/grossProfit.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- javascript file -->
+        <script src="./public/js/numberOfCustomers.js"></script>
+        <script src="./public/js/unitsPerTransaction.js"></script>
+        <script src="./public/js/returns.js"></script>
+        <script src="./public/js/revenueGrowth.js"></script>
+        <script src="./public/js/grossProfit.js"></script>
+        <script src="./public/js/ROR.js"></script>
     </body>
 
 </html>

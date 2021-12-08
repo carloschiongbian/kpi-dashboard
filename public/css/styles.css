@@ -36,6 +36,7 @@ body .container-fluid > * button {
 }
 
 body .container-fluid > * button[name="grossprofit-modal-btn"],
+body .container-fluid > * button[name="ROR-modal-btn"],
 body .container-fluid > * button[name="modal-btn"] {
   background-color: whitesmoke;
   border-radius: 10px;
@@ -45,6 +46,7 @@ body .container-fluid > * button[name="modal-btn"] {
 }
 
 body .container-fluid > * button[name="grossprofit-modal-btn"]:focus,
+body .container-fluid > * button[name="ROR-modal-btn"]:focus,
 body .container-fluid > * button[name="modal-btn"]:focus {
   outline: none;
 }

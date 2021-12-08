@@ -58,30 +58,9 @@ function updateGrossProfitChart(gross_profit, gross_profit_period) {
   grossChart.update();
 }
 
-// DO NOT touch this function
-// function calculateIRR(){
-
-//   let present_worth = 0;
-//   let capital_investment = datainfo.datasets[0].data[0];
-
-//   for(var x = 1; x < datainfo.datasets[0].data.length; x++){
-//     present_worth = present_worth + parseInt(monthly_cash_flow);  
-//   }
-
-//   datainfo.datasets[0].data.forEach(monthly_cash_flow => {
-//     present_worth = present_worth + parseInt(monthly_cash_flow); 
-//   });
-
-//   console.log(present_worth);
-// }
-
-function resetGross() {
+function resetGrossProfitChart(){
   grossProfit_config.data.labels = [];
   grossProfit_config.data.datasets[0].data = [];
-
-  document.getElementById("revenue").value = "";
-  document.getElementById("cost-of-goods").value = "";
-  document.getElementById("month-period").value = "";
-    
+  localStorage.removeItem('grossProfit');
   grossChart.update();
 }

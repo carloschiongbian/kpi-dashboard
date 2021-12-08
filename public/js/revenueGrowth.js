@@ -58,6 +58,7 @@ function submitRev(){
       globalObj.revenue.push(revI);
 
       let grossProfit = parseInt(revI) - parseInt(expenses);
+      document.getElementById("rev-date-input").min = revD;
 
       // ----------------------------------------------------------------------------------------------------------------
       //we call the updating function for GROSS PROFIT here so that we can get the total expense for a specific period
@@ -90,6 +91,9 @@ function submitRev(){
 }
 
 function resetRev() {
+
+    resetGrossProfitChart();
+    
     revenue_config.data.labels = [];
     revenue_config.data.datasets[0].data = [];
     localStorage.removeItem('revenueGrowth');

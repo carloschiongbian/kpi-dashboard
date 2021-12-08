@@ -1,11 +1,13 @@
+let monthly_data = (JSON.parse(localStorage.getItem('numberOfCustomers')) == null) ? [] : JSON.parse(localStorage.getItem('numberOfCustomers'));
 const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
 
 // reference for the function
 let data = {
-    labels: [],
+    labels: monthly_data.labels == null? []: monthly_data.labels,
     datasets: [{
         label: 'Number of Customers Retained',
-        data: [],
+        data: (monthly_data.customers == null)? []: monthly_data.customers,
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
@@ -24,7 +26,6 @@ let no_of_customers_chart = new Chart(
 // reference for the function
 
 let analysis_data = [];
-let test = 0;
 
 function numberOfCustomersRetained(){
 
@@ -37,28 +38,19 @@ function numberOfCustomersRetained(){
 
         date = new Date(period);
         let formattedDate = months[date.getMonth()] + "-" + date.getFullYear();
-
-        var new_data = {
-            customers: [],
-            labels: []
-        };
         
-        data.labels.push(formattedDate);
-        data.datasets[0].data.push(number_of_customers);
+        no_of_customers_chart.config.data.labels.push(formattedDate);
+        no_of_customers_chart.config.data.datasets[0].data.push(number_of_customers);
+        no_of_customers_chart.update();
 
-        data.datasets[0].data.forEach(data => {
-            new_data.customers.push(data);
-        });
+        let new_data = {
+            customers: no_of_customers_chart.config.data.datasets[0].data,
+            labels: no_of_customers_chart.config.data.labels
+        };
 
-        data.labels.forEach(data => {
-            new_data.labels.push(data);
-        });
+        localStorage.setItem("numberOfCustomers", JSON.stringify(new_data));
 
         createAnalysis(number_of_customers, formattedDate);
-        
-        no_of_customers_chart.config.data.datasets[0].data = new_data.customers;
-        no_of_customers_chart.config.data.labels = new_data.labels;
-        no_of_customers_chart.update();
 
         document.getElementById("no-of-customers-input").value = "";
         document.getElementById("month-input").value = "";
@@ -74,6 +66,7 @@ function resetChart(){
     };
     document.getElementById("month-input").min = "";
     document.getElementById("modal-body").innerText = "";
+    localStorage.removeItem('numberOfCustomers');
     no_of_customers_chart.config.data.datasets[0].data = reset_data.reset_cust;
     no_of_customers_chart.config.data.labels = reset_data.reset_labels;
     analysis_data = [];

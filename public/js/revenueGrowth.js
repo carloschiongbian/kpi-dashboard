@@ -1,18 +1,17 @@
 let revObj = JSON.parse(localStorage.getItem('revenueGrowth')) == null ? [] : JSON.parse(localStorage.getItem('revenueGrowth'));
 let i = 0;
-let globalObj = {
+var globalObj = {
   labels: [],
   data: [],
   revenue: [],
-  newLabels: []
+  newLabels: [],
+  gross_profit: []
 }
-
-
 
 const revdata = {
     labels: revObj.newLabels == null? []: revObj.newLabels ,
     datasets: [{
-      label: 'Revenue Growth',
+      label: 'Revenue Growth (by percentage)',
       data: revObj.data == null? []: revObj.data,
       borderColor: 'rgb(75, 192, 192)',
     }]
@@ -48,6 +47,7 @@ function createPeriod(i) {
 
 function submitRev(){
   let revI = document.getElementById("revenueInput").value;
+  let expenses = document.getElementById("expensesInput").value;
   let revD = document.getElementById("rev-date-input").value;
   let percentChange;
   let newLabels;
@@ -57,6 +57,12 @@ function submitRev(){
       globalObj.labels.push(revD);
       globalObj.revenue.push(revI);
 
+      let grossProfit = parseInt(revI) - parseInt(expenses);
+
+      // ----------------------------------------------------------------------------------------------------------------
+      //we call the updating function for GROSS PROFIT here so that we can get the total expense for a specific period
+      updateGrossProfitChart(grossProfit, revD);
+      // ----------------------------------------------------------------------------------------------------------------
       
       if (globalObj.revenue.length >= 2 ) {
         percentChange = calculateAveragePercentageChange(i);
@@ -77,6 +83,7 @@ function submitRev(){
       
       
         document.getElementById("revenueInput").value = "";
+        document.getElementById("expensesInput").value = "";
         document.getElementById("rev-date-input").value = "";
     }
     else(alert("Please Input Revenue Data"))
@@ -89,6 +96,7 @@ function resetRev() {
     reveChart.update();
      i = 0;
     document.getElementById("revenueInput").value = "";
+    document.getElementById("expensesInput").value = "";
     document.getElementById("rev-date-input").value = "";
     
 }

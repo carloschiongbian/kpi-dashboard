@@ -51,6 +51,19 @@ body {
         }
       }
 
+      button[name="return-modal-btn"],
+      button[name="modal-btn"]{
+        background-color: $btn-color;
+        border-radius: 10px;
+        color: black;
+        margin: 0;
+        padding: 10px;
+        
+        &:focus{
+          outline: none;
+        }
+      }
+
       .input-data > * {
         margin: auto;
         margin-top: 10px;
@@ -126,6 +139,8 @@ body {
         color: black;
         border-radius: 10px;
 
+     
+
         .modal-body > *{
           border: 1px solid black;
           padding: 10px;
@@ -146,7 +161,31 @@ body {
           }
         }
       }
-      
+      #return-modal > *{
+        color: black;
+        border-radius: 10px;
+
+        .modal-body > *{
+          border: 1px solid black;
+          padding: 10px;
+          border-radius: 10px;
+          margin: 5px;
+        }
+
+        .modal-footer{
+          text-align: center;
+
+          button{
+            color: black;
+
+            &:hover{
+              background-color: gray;
+              color: white;
+            }
+          }
+        }
+      }
     }
   }
+  
 }

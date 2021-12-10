@@ -139,7 +139,7 @@ function chartAna() {
 
   // document.getElementById("revenue-modal-body").innerHTML = "<br>"+minimum+"</br>"+"<br>"+maximum+"</br>";
 
-  $('#revenueGrowth-modal').modal('show');
+  // $('#revenueGrowth-modal').modal('show');
 
 }
 

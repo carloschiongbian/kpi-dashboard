@@ -65,7 +65,7 @@ function renderLineChart() {
         document.getElementById("no-of-transactions-input").value = "";
         document.getElementById("month-period-input").value = "";
     } else {
-        alert("Error! Something is wrong! Please Try again!")
+        alert("Please input data in the text boxes provided.")
     }
 }
 
@@ -94,27 +94,32 @@ function fontColor(str, color) {
 
 function generateUTPAnalysis() {
     let values = [];
-    for (let i = 0; i < obj.data.length - 1; i++){
-        values.push(calculateIndividualPercentageChange(obj.data[i], obj.data[i+1]));
-    }
-    let sum = values.reduce((a, b) => a + b, 0)
-    let averagePercentageChange =  sum / units_per_transaction_config.data.datasets[0].data.length;
-    let firstDate = units_per_transaction_config.data.labels[0];
-    let lastDate = units_per_transaction_config.data.labels[units_per_transaction_config.data.labels.length-1];
 
+    if(obj.gross_profit.length > 0){
+        for (let i = 0; i < obj.data.length - 1; i++){
+            values.push(calculateIndividualPercentageChange(obj.data[i], obj.data[i+1]));
+        }
+        let sum = values.reduce((a, b) => a + b, 0)
+        let averagePercentageChange =  sum / units_per_transaction_config.data.datasets[0].data.length;
+        let firstDate = units_per_transaction_config.data.labels[0];
+        let lastDate = units_per_transaction_config.data.labels[units_per_transaction_config.data.labels.length-1];
     
-    let generateText = "Based on the data, from " + firstDate + " to " + lastDate + " the average growth of units per transaction is ";
-
-    let addedText = "";
-    if (averagePercentageChange < 0) {
-        generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"red") + "%.";
-        addedText = generateText + " This indicates that there is a decline in a company's sales or earnings";
-    } else if (averagePercentageChange > 0) {
-        generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"blue") + "%.";
-        addedText = generateText + " This indicates that the company is improving and is likely to show higher earnings.";
+        
+        let generateText = "Based on the data, from " + firstDate + " to " + lastDate + " the average growth of units per transaction is ";
+    
+        let addedText = "";
+        if (averagePercentageChange < 0) {
+            generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"red") + "%.";
+            addedText = generateText + " This indicates that there is a decline in a company's sales or earnings";
+        } else if (averagePercentageChange > 0) {
+            generateText = generateText + fontColor(averagePercentageChange.toFixed(2).toString(),"blue") + "%.";
+            addedText = generateText + " This indicates that the company is improving and is likely to show higher earnings.";
+        }
+        document.getElementById("modal-units-per-transact-body").innerHTML = addedText;
+    
+        $('#unitsPerTransaction-modal').modal('show');
+    } else {
+        alert("There is no data in storage yet, or user is required to input at least two inputs for analysis");
     }
-    document.getElementById("modal-units-per-transact-body").innerHTML = addedText;
-
-    $('#unitsPerTransaction-modal').modal('show');
 }
 

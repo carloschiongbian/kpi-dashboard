@@ -21,7 +21,7 @@ function calculateROR() {
         let ROR = parseInt(sumOfGrossProfits) / parseInt(firstCost);
         new_div.innerText = 
             "Based on the gross profit data, and the first cost, the rate of return is " + 
-            ROR + "%";
+            ROR.toFixed(2) + "%";
         ;
 
         displayROR.appendChild(new_div);

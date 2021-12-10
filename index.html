@@ -112,32 +112,10 @@
             <canvas id="grossProfit"></canvas>
             <div class="input-data">
                 <input type = "number" id = "first-cost-input" placeholder = "First Cost" min="0" style="margin-bottom: 10px">
-                <button type="button" name="grossprofit-modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#gross-profit-modal">
-                    Chart Analysis
-                </button>
                 <button type="button" onclick="calculateROR()" id="ROR-modal-btn" name="ROR-modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#ROR-modal"> 
                     Check Rate of Return
                 </button>
-                <!-- CHART ANALYSIS Modal -->
-                <div class="modal fade" id="gross-profit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Analysis</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" id="modal-body">
-                            <!-- analysis will be inserted here -->
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                
                 <!-- RATE OF RETURN Modal -->
                 <div class="modal fade" id="ROR-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -172,7 +150,7 @@
                 <input type = "number" id = "damaged" placeholder = "Damaged">
                 <button onclick = "resetPie()">Reset Chart</button>
                 <button onclick = "renderPie()">Submit</button>
-                <button onclick = "generateAnalysis()" id="return-modal-btn" name="return-modal-btn"> 
+                <button onclick = "generateAnalysis()" data-toggle="modal" name="return-modal-btn"> 
                    Generate Analysis
                 </button>
                 <!-- Modal -->

@@ -87,7 +87,9 @@ function submitRev(){
         document.getElementById("expensesInput").value = "";
         document.getElementById("rev-date-input").value = "";
     }
-    else(alert("Please Input Revenue Data"))
+    else{
+      alert("Please input data in the text boxes provided.");
+    }
 }
 
 function resetRev() {

@@ -55,7 +55,7 @@ function numberOfCustomersRetained(){
         document.getElementById("no-of-customers-input").value = "";
         document.getElementById("month-input").value = "";
     } else {
-        alert("Please input values.");
+        alert("Please input data in the text boxes provided.");
     }
 }
 
@@ -65,6 +65,8 @@ function resetChart(){
         reset_labels: []
     };
     document.getElementById("month-input").min = "";
+    document.getElementById("month-input").value = "";
+    document.getElementById("no-of-customers-input").value = "";
     document.getElementById("modal-body").innerText = "";
     localStorage.removeItem('numberOfCustomers');
     no_of_customers_chart.config.data.datasets[0].data = reset_data.reset_cust;

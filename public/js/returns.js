@@ -1,10 +1,10 @@
-let retObj = JSON.parse(localStorage.getItem('returns')) == null ? [] : JSON.parse(localStorage.getItem('returns'));
+let retObj = (JSON.parse(localStorage.getItem('returns')) == null) ? [] : JSON.parse(localStorage.getItem('returns'));
 let names = ['Overdue', 'Defective', 'Damaged'];
 
 let product = {
   labels: names,
   datasets: [{ 
-    data: retObj.data == null? []: retObj.data, 
+    data: (retObj.data == null)? []: retObj.data, 
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
@@ -17,12 +17,6 @@ let product = {
 let returns_config = {
   type: 'pie',
   data: product 
-
-  // this makes the height infinitely increase for some reason
-  // options:{
-  //   responsive: true,
-  //   maintainAspectRatio: false, 
-  // }
 };
 
 let return_chart = new Chart(
@@ -56,7 +50,7 @@ function renderPie(){
       
   
     } else {
-        alert("invalid data");
+        alert("Please input data in the text boxes provided.");
     }
   } else {
     if (over != "" && def != "" && dam != "") {
@@ -84,47 +78,57 @@ function renderPie(){
       document.getElementById("defective").value = "";
       document.getElementById("damaged").value = "";
     } else {
-        alert("invalid data");
+        alert("Please input data in the text boxes provided.");
     }
   }
 }
 
 function resetPie(){
   returns_config.data.datasets[0].data = [];
+  document.getElementById("return-modal-body").innerText = " ";
   localStorage.removeItem('returns');
   return_chart.update();
+  document.getElementById("overdue").value = "";
+      document.getElementById("defective").value = "";
+      document.getElementById("damaged").value = "";
 }
 
 function generateAnalysis(){
- console.log(retObj.data[0]);
- let over;
- let defective;
- let damaged;
-if(retObj.data[0]<10){
-   over = "The current returned items that are overdue is " +retObj.data[0]+ " which is not in a alarming level yet. Profits are normal";
-}
-else if(retObj.data[0]>10){
-   over = "The current returned items that are overdue is " +retObj.data[0]+ " which is alarming. It is advised to improve order fulfillment process";
-}
 
-if(retObj.data[1]<10){
-  defective = "The current returned items due to defect is "+retObj.data[1]+ " which is not in a alarming state. Profits are normal";
-}
-else if(retObj.data[1]>10){
-  defective = "The current returned items due to defect is "+retObj.data[1]+ " This is alarming. please contact company behind the product defect";
-}
-if(retObj.data[2]<10){
-  damaged = "The current damaged items is "+retObj.data[2]+ " which is not to be concerned about. Profits are normal";
-}
-else if(retObj.data[2]>10){
-  damaged = "The current damaged items is "+retObj.data[2]+ " which is alarming. It is advised to improve order fulfillment process";
-}
+  let over;
+  let defective;
+  let damaged;
 
+  if(retObj == undefined){
 
+    alert("no data provided for analysis");
 
-document.getElementById("return-modal-body").innerHTML = "<br>"+ over+"</br>"+"<br>"+defective+"</br>"+"<br>"+damaged+"</br>";
+  } else {
+    if(retObj.data[0]<10){
+      over = "The current returned items that are overdue is " +retObj.data[0]+ " which is not in a alarming level yet. Profits are normal";
+    }
+    else if(retObj.data[0]>10){
+      over = "The current returned items that are overdue is " +retObj.data[0]+ " which is alarming. It is advised to improve order fulfillment process";
+    }
 
-$('#returnedItems-modal').modal('show');
+    if(retObj.data[1]<10){
+      defective = "The current returned items due to defect is "+retObj.data[1]+ " which is not in a alarming state. Profits are normal";
+    }
+    else if(retObj.data[1]>10){
+      defective = "The current returned items due to defect is "+retObj.data[1]+ " This is alarming. please contact company behind the product defect";
+    }
+    if(retObj.data[2]<10){
+      damaged = "The current damaged items is "+retObj.data[2]+ " which is not to be concerned about. Profits are normal";
+    }
+    else if(retObj.data[2]>10){
+      damaged = "The current damaged items is "+retObj.data[2]+ " which is alarming. It is advised to improve order fulfillment process";
+    }
+
+    document.getElementById("return-modal-body").innerHTML = "<br>"+ over+"</br>"+"<br>"+defective+"</br>"+"<br>"+damaged+"</br>";
+
+    $('#returnedItems-modal').modal('show');    
+  }
+
 }
  
 

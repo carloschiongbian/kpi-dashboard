@@ -110,8 +110,10 @@ function chartAna() {
   let minimum;
   let maximum;
 
-  var min = Math.min.apply(null, revObj.data);
-  var max = Math.max.apply(null, revObj.data);
+  let rev_analysis = JSON.parse(localStorage.getItem('revenueGrowth')) == null ? [] : JSON.parse(localStorage.getItem('revenueGrowth'));
+
+  var min = Math.min.apply(null, rev_analysis.data);
+  var max = Math.max.apply(null, rev_analysis.data);
 
   if (min < 0) {
     minimum = "The least amount of sales is " + min + ". Sales in this period are very low. Please approach the personels about the problem";

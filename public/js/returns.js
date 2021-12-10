@@ -95,29 +95,31 @@ function generateAnalysis(){
   let defective;
   let damaged;
 
-  if(retObj == undefined){
+  let analysis = (JSON.parse(localStorage.getItem('returns')) == null) ? [] : JSON.parse(localStorage.getItem('returns'));
+
+  if(analysis == undefined){
 
     alert("no data provided for analysis");
 
   } else {
-    if(retObj.data[0]<10){
-      over = "The current returned items that are overdue is " +retObj.data[0]+ " which is not in a alarming level yet. Profits are normal";
+    if(analysis.data[0]<10){
+      over = "The current returned items that are overdue is " +analysis.data[0]+ " which is not in a alarming level yet. Profits are normal";
     }
-    else if(retObj.data[0]>10){
-      over = "The current returned items that are overdue is " +retObj.data[0]+ " which is alarming. It is advised to improve order fulfillment process";
+    else if(analysis.data[0]>10){
+      over = "The current returned items that are overdue is " +analysis.data[0]+ " which is alarming. It is advised to improve order fulfillment process";
     }
 
-    if(retObj.data[1]<10){
-      defective = "The current returned items due to defect is "+retObj.data[1]+ " which is not in a alarming state. Profits are normal";
+    if(analysis.data[1]<10){
+      defective = "The current returned items due to defect is "+analysis.data[1]+ " which is not in a alarming state. Profits are normal";
     }
-    else if(retObj.data[1]>10){
-      defective = "The current returned items due to defect is "+retObj.data[1]+ " This is alarming. please contact company behind the product defect";
+    else if(analysis.data[1]>10){
+      defective = "The current returned items due to defect is "+analysis.data[1]+ " This is alarming. please contact company behind the product defect";
     }
-    if(retObj.data[2]<10){
-      damaged = "The current damaged items is "+retObj.data[2]+ " which is not to be concerned about. Profits are normal";
+    if(analysis.data[2]<10){
+      damaged = "The current damaged items is "+analysis.data[2]+ " which is not to be concerned about. Profits are normal";
     }
-    else if(retObj.data[2]>10){
-      damaged = "The current damaged items is "+retObj.data[2]+ " which is alarming. It is advised to improve order fulfillment process";
+    else if(analysis.data[2]>10){
+      damaged = "The current damaged items is "+analysis.data[2]+ " which is alarming. It is advised to improve order fulfillment process";
     }
 
     document.getElementById("return-modal-body").innerHTML = "<br>"+ over+"</br>"+"<br>"+defective+"</br>"+"<br>"+damaged+"</br>";

@@ -95,9 +95,11 @@ function fontColor(str, color) {
 
 function generateUTPAnalysis() {
     let values = [];
+
+    let UTP_analysis = JSON.parse(localStorage.getItem('unitsPerTransact')) == null ? [] : JSON.parse(localStorage.getItem('unitsPerTransact'));
     
-    for (let i = 0; i < obj.data.length - 1; i++){
-        let x = calculateIndividualPercentageChange(obj.data[i], obj.data[i+1]);
+    for (let i = 0; i < UTP_analysis.data.length - 1; i++){
+        let x = calculateIndividualPercentageChange(UTP_analysis.data[i], UTP_analysis.data[i+1]);
         values.push(x);
     }
     let sum = values.reduce((a, b) => a + b, 0)

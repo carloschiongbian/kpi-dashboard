@@ -120,6 +120,6 @@ function generateUTPAnalysis() {
     }
     document.getElementById("modal-units-per-transact-body").innerHTML = addedText;
 
-    $('#unitsPerTransaction-modal').modal('show');
+    // $('#unitsPerTransaction-modal').modal('show');
 }
 

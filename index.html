@@ -86,11 +86,11 @@
                 <input type = "date"   id = "month-period-input" placeholder = "Enter Date">
                 <button onclick = "resetLineChart()">Reset Chart</button>
                 <button onclick = "renderLineChart()">Submit</button>
-                <button onclick="generateUTPAnalysis()">
+                <button type="button" data-toggle="modal" data-target="#unitsPerTransaction-modal" onclick="generateUTPAnalysis()">
                     Generate Analysis
                 </button>
                 <!-- Modal -->
-                <div class="modal fade" id="unitsPerTransaction-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="unitsPerTransaction-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" display="none">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">

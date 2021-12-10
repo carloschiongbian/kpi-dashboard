@@ -81,8 +81,6 @@ function submitRev(){
         i++;
       }
       
-      
-      
         document.getElementById("revenueInput").value = "";
         document.getElementById("expensesInput").value = "";
         document.getElementById("rev-date-input").value = "";
@@ -112,7 +110,6 @@ function chartAna() {
   let minimum;
   let maximum;
 
-
   var min = Math.min.apply(null, revObj.data);
   var max = Math.max.apply(null, revObj.data);
 
@@ -122,14 +119,23 @@ function chartAna() {
   else if (min > 0) {
     minimum = "The least amount of sales is " + min + ". Sales in this period are low. Create new strategy to improve sales.";
   }
-  if(max < 100) {
+  if(max != undefined) {
     maximum = "The greatest amount of sales is " + max + ". Sales in this period are high. Maintain the strategies that you have created.";
   }
   else if(max > 100) {
     maximum = "The greatest amount of sales is "+ max + ". Your profit has exceeded maximum the quota."
   }
 
-  document.getElementById("revenue-modal-body").innerHTML = "<br>"+minimum+"</br>"+"<br>"+maximum+"</br>";
+
+  let new_div = document.createElement("div");
+
+  new_div.innerHTML = 
+    "<br>"+minimum+"</br>"+"<br>"+maximum+"</br>";
+  ;
+
+  document.getElementById("revenue-modal-body").appendChild(new_div);
+
+  // document.getElementById("revenue-modal-body").innerHTML = "<br>"+minimum+"</br>"+"<br>"+maximum+"</br>";
 
   $('#revenueGrowth-modal').modal('show');
 

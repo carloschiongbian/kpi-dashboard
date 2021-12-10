@@ -42,12 +42,9 @@ function renderPie(){
       localStorage.setItem("returns", JSON.stringify(obj));
       console.log(localStorage.getItem('returns'))
       
-
-
       document.getElementById("overdue").value = "";
       document.getElementById("defective").value = "";
       document.getElementById("damaged").value = "";
-      
   
     } else {
         alert("Please input data in the text boxes provided.");
@@ -55,7 +52,6 @@ function renderPie(){
   } else {
     if (over != "" && def != "" && dam != "") {
       
-   
       new_over = parseInt(returns_config.data.datasets[0].data[0]) + parseInt(over);
       new_def = parseInt(returns_config.data.datasets[0].data[1]) + parseInt(def);
       new_dam = parseInt(returns_config.data.datasets[0].data[2]) + parseInt(dam);
@@ -73,10 +69,10 @@ function renderPie(){
       console.log(localStorage.getItem('returns'))
       console.log(new_over+new_def+new_dam);
     
-
       document.getElementById("overdue").value = "";
       document.getElementById("defective").value = "";
       document.getElementById("damaged").value = "";
+      
     } else {
         alert("Please input data in the text boxes provided.");
     }

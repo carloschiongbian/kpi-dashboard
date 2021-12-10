@@ -83,6 +83,7 @@ function resetLineChart() {
 
 function calculateIndividualPercentageChange(initial, next) {
     let result = ((next - initial)/initial) * 100;
+    console.log("hello");
     return result;
 }
 
@@ -94,8 +95,10 @@ function fontColor(str, color) {
 
 function generateUTPAnalysis() {
     let values = [];
+    
     for (let i = 0; i < obj.data.length - 1; i++){
-        values.push(calculateIndividualPercentageChange(obj.data[i], obj.data[i+1]));
+        let x = calculateIndividualPercentageChange(obj.data[i], obj.data[i+1]);
+        values.push(x);
     }
     let sum = values.reduce((a, b) => a + b, 0)
     let averagePercentageChange =  sum / units_per_transaction_config.data.datasets[0].data.length;

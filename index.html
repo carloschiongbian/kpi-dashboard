@@ -149,10 +149,11 @@
                 <input type = "number" id = "defective" placeholder = "Defective" min="0">
                 <input type = "number" id = "damaged" placeholder = "Damaged">
                 <button onclick = "resetPie()">Reset Chart</button>
-                <button onclick = "renderPie()">Submit</button>
+                <button type="submit" onclick = "renderPie()">Submit</button>
                 <button onclick = "generateAnalysis()" data-toggle="modal" name="return-modal-btn"> 
-                   Generate Analysis
+                    Generate Analysis
                 </button>
+                
                 <!-- Modal -->
                 <div class="modal fade" id="returnedItems-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
